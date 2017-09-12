@@ -1,11 +1,13 @@
 package kr.edcan.customanimationtest.Activity;
 
+import android.app.ActivityOptions;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import kr.edcan.customanimationtest.Model.User;
 import kr.edcan.customanimationtest.R;
 import kr.edcan.customanimationtest.databinding.ActivityMainBinding;
 import kr.edcan.customanimationtest.databinding.ItemUserBinding;
+import android.util.Pair;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(UserViewHolder holder, int i) {
             final User user = users.get(i);
             holder.binding.setUser(user);
+
         }
 
         public class UserViewHolder extends RecyclerView.ViewHolder{
@@ -60,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
             public UserViewHolder(ItemUserBinding binding) {
                 super(binding.getRoot());
                 this.binding = binding;
+                this.binding.getRoot().setOnClickListener(e -> {
+                        final ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                                MainActivity.this,
+                                Pair.create(binding.profileImage, "profileImage"),
+                                Pair.create(binding.nameText, "nameText"),
+                                Pair.create(binding.ageText, "ageText")
+                        );
+
+                        final Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                        intent.putExtra("user", binding.getUser());
+                        startActivity(intent, options.toBundle());
+                });
             }
         }
     }

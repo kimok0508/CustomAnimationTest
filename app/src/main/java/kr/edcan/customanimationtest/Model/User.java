@@ -1,10 +1,12 @@
 package kr.edcan.customanimationtest.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 2017. 9. 12..
  */
 
-public class User {
+public class User implements Serializable{
     private String name;
     private int age;
     private String imageUrl;

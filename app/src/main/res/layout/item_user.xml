@@ -1,8 +1,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="user"
-            type="kr.edcan.customanimationtest.Model.User"/>
+            type="kr.edcan.customanimationtest.Model.User" />
     </data>
 
     <LinearLayout
@@ -12,11 +14,12 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/profileImage"
-            android:layout_width="64sp"
             app:url="@{user.imageUrl}"
-            android:layout_height="64sp" />
+            android:transitionName="profileImage"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,16 +29,18 @@
 
             <TextView
                 android:id="@+id/nameText"
-                android:text="@{user.name}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:transitionName="nameText"
+                android:text="@{user.name}" />
 
             <TextView
                 android:id="@+id/ageText"
+                android:transitionName="ageText"
                 marginTop="8sp"
-                android:text="@{Integer.toString(user.age)}"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(user.age)}" />
         </LinearLayout>
     </LinearLayout>
 </layout>
