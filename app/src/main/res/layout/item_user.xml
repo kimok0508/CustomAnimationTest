@@ -1,7 +1,7 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:gravity="cneter_vertical"
+    android:gravity="center_vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v4.widget.CircleImageView
@@ -10,7 +10,6 @@
         android:layout_height="64sp" />
 
     <LinearLayout
-        android:layout_gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,7 +21,7 @@
             android:layout_width="wrap_content"/>
 
         <TextView
-            android:id="ageText"
+            android:id="@+id/ageText"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             marginTop="8sp"/>
